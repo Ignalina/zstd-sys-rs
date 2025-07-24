@@ -6,7 +6,7 @@ fn main() {
     println!("cargo:rerun-if-changed=wrapper.h");
 
     let libzstd_path = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap())
-        .join("zstd-local/lib");
+        .join("./zstd-local/lib");
     println!("cargo:rustc-link-search=native={}", libzstd_path.display());
     println!("cargo:rustc-link-lib=static=zstd");
 
@@ -14,7 +14,7 @@ fn main() {
         .header("wrapper.h")
         .clang_arg("-DZSTD_STATIC_LINKING_ONLY")
         .clang_arg("-DZSTD_MULTITHREAD")
-        .clang_arg("-Izstd-local/include")
+        .clang_arg("-I./zstd-local/include")
         .default_enum_style(EnumVariation::Rust { non_exhaustive: false })
         .allowlist_function("ZSTD_.*")
         .allowlist_var("ZSTD_.*")
