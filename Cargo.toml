@@ -10,8 +10,10 @@ repository = "https://github.com/Ignalina/zstd-sys-rs"
 readme = "README.md"
 keywords = ["ffi", "compression", "zstd", "sys"]
 categories = ["compression", "external-ffi-bindings", "development-tools::ffi"]
-authors = ["Rickard Lundin <your@email.com>"]
+authors = ["Rickard Ernst Björn Lundin <rickard.lundin@x14.se>"]
 exclude = ["zstd-local/", "zstd/", "target/", "*.OLD", "*.bak", ".gitignore"]
+homepage = "https://github.com/Ignalina/zstd-sys-rs"
+documentation = "https://docs.rs/zstd-sys"
 
 # 🧙‍♂️ Med Allfaderns visdom, kompression och korruptionsskydd.
 # ⚡ Med hans blick över varje bit.
