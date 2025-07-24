@@ -8,8 +8,6 @@ fn main() {
     // Compile C files
     cc::Build::new()
         .include("zstd/lib")
-        .define("ZSTD_MULTITHREAD", None)
-        .define("ZSTD_STATIC_LINKING_ONLY", None)
         .include("zstd/lib/common")
         .include("zstd/include")
         .files([
