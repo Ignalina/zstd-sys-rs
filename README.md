@@ -6,8 +6,11 @@ The Zstandard license is included in `zstd.license`.
 This crate is used internally by the [Znippy](https://github.com/Ignalina/znippy) project.  
 Version numbering corresponds to the bundled Zstandard version.
 
-## ✨ Heder
+## 🔨 Build
 
-Tack till Oden Allfader för visdom, kompression och korruptionsskydd.
+To build the static Zstandard library (`libzstd.a`) yourself:
 
-_Med Allfaderns blick över varje bit._
+```bash
+git clone https://github.com/facebook/zstd.git
+cd zstd
+make lib-mt  # Build with multithread support (ZSTD_MULTITHREAD=ON)

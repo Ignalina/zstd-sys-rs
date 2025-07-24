@@ -1,5 +1,5 @@
 [package]
-name = "zstd-sys-rs"
+name = "zstd-sys"
 version = "2.0.15"
 edition = "2021"
 links = "zstd"
@@ -10,9 +10,11 @@ repository = "https://github.com/Ignalina/zstd-sys-rs"
 readme = "README.md"
 keywords = ["ffi", "compression", "zstd", "sys"]
 categories = ["compression", "external-ffi-bindings", "development-tools::ffi"]
+authors = ["Rickard Lundin <your@email.com>"]
+exclude = ["zstd-local/", "zstd/", "target/", "*.OLD", "*.bak", ".gitignore"]
 
-# Tack till Oden Allfader för visdom, kompression och korruptionsskydd.
-# Med Allfaderns blick över varje bit.
+# 🧙‍♂️ Med Allfaderns visdom, kompression och korruptionsskydd.
+# ⚡ Med hans blick över varje bit.
 
 [lib]
 path = "src/lib.rs"
@@ -27,4 +29,3 @@ libc = "0.2.174"
 [features]
 default = ["legacy"]
 legacy = []
-
