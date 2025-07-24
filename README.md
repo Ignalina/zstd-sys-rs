@@ -15,10 +15,12 @@ git clone https://github.com/facebook/zstd.git
 cd zstd
 make lib-mt  # Build with multithread support (ZSTD_MULTITHREAD=ON)
 
+
+```
 ✨ Heder
 
-🧙‍♂Med Allfaderns visdom, kompression och korruptionsskydd.
-⚡ Med hans blick över varje bit.
+  🧙‍♂Med Allfaderns visdom, kompression och korruptionsskydd.  
+  ⚡ Med hans blick över varje bit.  
 
 ## License
 
