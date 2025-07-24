@@ -1,0 +1,30 @@
+[package]
+name = "zstd-sys-rs"
+version = "2.0.15"
+edition = "2021"
+links = "zstd"
+
+description = "FFI-bindning till statisk Zstandard – med Allfaderns blick över varje bit"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Ignalina/zstd-sys-rs"
+readme = "README.md"
+keywords = ["ffi", "compression", "zstd", "sys"]
+categories = ["compression", "external-ffi-bindings", "development-tools::ffi"]
+
+# Tack till Oden Allfader för visdom, kompression och korruptionsskydd.
+# Med Allfaderns blick över varje bit.
+
+[lib]
+path = "src/lib.rs"
+
+[build-dependencies]
+cc = "1.2.30"
+bindgen = "0.72.0"
+
+[dependencies]
+libc = "0.2.174"
+
+[features]
+default = ["legacy"]
+legacy = []
+
