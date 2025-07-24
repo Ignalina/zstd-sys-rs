@@ -36,7 +36,6 @@ fn main() {
             "zstd/lib/decompress/zstd_decompress_block.c",
         ])
         .flag_if_supported("-std=c99")
-        .flag_if_supported("-Wno-macro-redefined")
         .define("ZSTD_MULTITHREAD", None)
         .define("ZSTD_STATIC_LINKING_ONLY", None)
         .compile("zstd");
