@@ -11,7 +11,7 @@ readme = "README.md"
 keywords = ["ffi", "compression", "zstd", "sys"]
 categories = ["compression", "external-ffi-bindings", "development-tools::ffi"]
 authors = ["Rickard Ernst Björn Lundin <rickard.lundin@x14.se>"]
-exclude = ["zstd-local/", "zstd/", "target/", "*.OLD", "*.bak", ".gitignore","*.orig","target/","zstd-local/"]
+exclude = ["zstd-local/", "zstd/", "target/", "*.OLD", "*.bak", ".gitignore", "*.orig"]
 
 
 homepage = "https://github.com/Ignalina/zstd-sys-rs"
