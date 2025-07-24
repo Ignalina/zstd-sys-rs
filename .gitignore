@@ -10,6 +10,8 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
+zstd/lib/Makefile
+zstd/lib/dll/example/Makefile
 
 # CLion
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
