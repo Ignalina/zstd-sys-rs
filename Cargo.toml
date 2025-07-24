@@ -1,35 +1,42 @@
 [package]
 name = "zstd-sys-rs"
-version = "2.0.15"
+version = "1.5.7"
 edition = "2021"
-links = "zstd"
-
-description = "FFI-bindning till statisk Zstandard – med Allfaderns blick över varje bit"
-license = "MIT OR Apache-2.0"
+license = "BSD-3-Clause"
+description = "Low-level Rust bindings to statically linked zstd v1.5.7"
 repository = "https://github.com/Ignalina/zstd-sys-rs"
-readme = "README.md"
-keywords = ["ffi", "compression", "zstd", "sys"]
-categories = ["compression", "external-ffi-bindings", "development-tools::ffi"]
-authors = ["Rickard Ernst Björn Lundin <rickard.lundin@x14.se>"]
-exclude = ["zstd-local/", "zstd/", "target/", "*.OLD", "*.bak", ".gitignore", "*.orig"]
+build = "build.rs"
+include = [
+    "src/**",
+    "zstd/lib/**",
+    "zstd/lib/common/**",
+    "zstd/lib/compress/**",
+    "zstd/lib/decompress/**",
+    "zstd/lib/deprecated/**",
+    "zstd/lib/dictBuilder/**",
+    "build.rs",
+    "wrapper.h",
+    "Cargo.toml",
+    "README.md",
+    "LICENSE",
+    "zstd.license"
+]
 
-
-homepage = "https://github.com/Ignalina/zstd-sys-rs"
-documentation = "https://docs.rs/zstd-sys"
-
-# 🧙‍♂️ Med Allfaderns visdom, kompression och korruptionsskydd.
-# ⚡ Med hans blick över varje bit.
-
-[lib]
-path = "src/lib.rs"
 
 [build-dependencies]
 cc = "1.2.30"
 bindgen = "0.72.0"
 
-[dependencies]
-libc = "0.2.174"
 
-[features]
-default = ["legacy"]
-legacy = []
+[dependencies]
+libc = "0.2"
+
+[package.metadata]
+# Optional, for clarity in documentation.
+zstd-version = "1.5.7"
+
+[lib]
+name = "zstd_sys_rs"
+path = "src/lib.rs"
+
+
