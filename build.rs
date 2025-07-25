@@ -13,6 +13,7 @@ fn main() {
         .include("zstd/lib/decompress")
         .include("zstd/include")
         .flag_if_supported("-std=c99")
+        .flag_if_supported("-march=native")
         .define("ZSTD_MULTITHREAD", None)
         .define("ZSTD_STATIC_LINKING_ONLY", None)
         .files([
@@ -29,6 +30,7 @@ fn main() {
             // compress
             "zstd/lib/compress/fse_compress.c",
             "zstd/lib/compress/huf_compress.c",
+            "zstd/lib/compress/hist.c",
             "zstd/lib/compress/zstd_compress.c",
             "zstd/lib/compress/zstd_compress_literals.c",
             "zstd/lib/compress/zstd_compress_sequences.c",
@@ -38,15 +40,24 @@ fn main() {
             "zstd/lib/compress/zstd_lazy.c",
             "zstd/lib/compress/zstd_ldm.c",
             "zstd/lib/compress/zstd_opt.c",
+            "zstd/lib/compress/zstd_preSplit.c",
             "zstd/lib/compress/zstdmt_compress.c",
 
-            // decompress (OBS: Endast de som faktiskt finns)
+            // decompress
             "zstd/lib/decompress/zstd_decompress.c",
             "zstd/lib/decompress/zstd_ddict.c",
             "zstd/lib/decompress/zstd_decompress_block.c",
             "zstd/lib/decompress/huf_decompress.c",
-        ])
-        .compile("zstd");
+        ]);
+
+    // Plattformsspecifik ASM
+    if cfg!(target_arch = "x86_64") {
+        build.file("zstd/lib/decompress/huf_decompress_amd64.S");
+    } else if cfg!(target_arch = "aarch64") {
+        build.file("zstd/lib/decompress/huf_decompress_arm64.S");
+    }
+
+    build.compile("zstd");
 
     println!("cargo:rustc-link-lib=static=zstd");
 
