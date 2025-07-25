@@ -1,6 +1,6 @@
 [package]
 name = "zstd-sys-rs"
-version = "1.5.7"
+version = "1.5.7+try"
 edition = "2021"
 license = "BSD-3-Clause"
 description = "Low-level Rust bindings to statically linked zstd v1.5.7"
