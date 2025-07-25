@@ -16,20 +16,19 @@ fn main() {
         .define("ZSTD_MULTITHREAD", None)
         .define("ZSTD_STATIC_LINKING_ONLY", None)
         .files([
-            // lib/common
+            // common
             "zstd/lib/common/debug.c",
             "zstd/lib/common/entropy_common.c",
             "zstd/lib/common/error_private.c",
-            "zstd/lib/common/fse_decompress.c", // ✅ finns här!
+            "zstd/lib/common/fse_decompress.c",
             "zstd/lib/common/pool.c",
             "zstd/lib/common/threading.c",
             "zstd/lib/common/xxhash.c",
             "zstd/lib/common/zstd_common.c",
 
-            // lib/compress
+            // compress
             "zstd/lib/compress/fse_compress.c",
             "zstd/lib/compress/huf_compress.c",
-            "zstd/lib/compress/hist.c",
             "zstd/lib/compress/zstd_compress.c",
             "zstd/lib/compress/zstd_compress_literals.c",
             "zstd/lib/compress/zstd_compress_sequences.c",
@@ -41,15 +40,17 @@ fn main() {
             "zstd/lib/compress/zstd_opt.c",
             "zstd/lib/compress/zstdmt_compress.c",
 
-            // lib/decompress
+            // decompress (OBS: Endast de som faktiskt finns)
             "zstd/lib/decompress/zstd_decompress.c",
+            "zstd/lib/decompress/zstd_ddict.c",
+            "zstd/lib/decompress/zstd_decompress_block.c",
             "zstd/lib/decompress/huf_decompress.c",
         ])
         .compile("zstd");
 
     println!("cargo:rustc-link-lib=static=zstd");
 
-    // Generate bindings
+    // Bindings
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")
         .clang_arg("-DZSTD_STATIC_LINKING_ONLY")
@@ -76,4 +77,3 @@ fn main() {
         out_path.join("bindings.rs").display()
     );
 }
-
