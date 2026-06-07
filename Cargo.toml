@@ -1,9 +1,9 @@
 [package]
 name = "zstd-sys-rs"
-version = "1.5.10"
+version = "1.5.11"
 edition = "2021"
 license = "BSD-3-Clause"
-description = "Low-level Rust bindings to statically linked zstd v1.5.7"
+description = "Rust bindings to statically linked zstd v1.5.7, with a safe zero-copy (de)compress API"
 repository = "https://github.com/Ignalina/zstd-sys-rs"
 build = "build.rs"
 include = [
@@ -39,5 +39,8 @@ zstd-version = "1.5.7"
 [lib]
 name = "zstd_sys_rs"
 path = "src/lib.rs"
+# bindgen copies libzstd's C doc-comments verbatim; they contain C snippets that
+# are not valid Rust doctests, so don't run them as such.
+doctest = false
 
 
